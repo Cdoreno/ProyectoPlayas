@@ -3,6 +3,7 @@ package com.example.playasarc.proyectoplayas;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,12 @@ public class LoginFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Fragment fragment = new RegisterFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
-
+                FragmentManager supportFragmentManager = getFragmentManager();
+                FragmentTransaction transaction = supportFragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                transaction.replace(R.id.fragment_container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         return v;
