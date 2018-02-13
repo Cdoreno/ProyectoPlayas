@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context="com.example.playasarc.proyectoplayas.SplashActivity">
+
+    <FrameLayout
+        android:id="@+id/frame1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/sol"
+            android:layout_width="182dp"
+            android:layout_height="162dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="-75dp"
+            android:layout_marginTop="45dp"
+            android:contentDescription="@null"
+            android:src="@drawable/sol"
+            tools:layout_editor_absoluteX="97dp"
+            tools:layout_editor_absoluteY="388dp" />
+
+        <ImageView
+            android:id="@+id/playa"
+            android:layout_width="235dp"
+            android:layout_height="257dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="90dp"
+            android:contentDescription="@null"
+            android:src="@drawable/playa"
+            tools:layout_editor_absoluteX="97dp"
+            tools:layout_editor_absoluteY="388dp" />
+    </FrameLayout>
+
+
+</android.support.constraint.ConstraintLayout>
