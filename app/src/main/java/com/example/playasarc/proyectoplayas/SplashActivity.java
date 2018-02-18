@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation rotateAnimation) {
                 Intent intent = new Intent();
-                intent.setClass(SplashActivity.this, LoginActivity.class);
+                intent.setClass(SplashActivity.this, MapActivity.class);
                 startActivity(intent);
                 SplashActivity.this.finish();
             }
