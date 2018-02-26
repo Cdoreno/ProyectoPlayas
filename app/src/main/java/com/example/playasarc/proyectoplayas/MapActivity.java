@@ -1,15 +1,23 @@
 package com.example.playasarc.proyectoplayas;
 
 import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -27,6 +35,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleApiClient mGoogleApiClient;
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private GoogleMap mMap;
+    private String m_Text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +70,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         LatLngBounds MALLORCA = new LatLngBounds(
                 new LatLng(39, 2.2), new LatLng(40, 3.6));
-
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(MALLORCA.getCenter(), 8));
         mMap.setLatLngBoundsForCameraTarget(MALLORCA);
     }
@@ -82,5 +90,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 }
                 break;
         }
+    }
+
+    public void addPlaya(MenuItem item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Añadir Mapa");
+
+        TextView tv = new TextView(this);
+        tv.setText("Una nueva playa se añadirá a la ubicación actual");
+        tv.setPadding(40, 40, 40, 40);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextSize(20);
+
+// Set up the input
+        final EditText input = new EditText(this);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setMessage("Una nueva playa se añadirá a la ubicación actual");
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                m_Text = input.getText().toString();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 }
