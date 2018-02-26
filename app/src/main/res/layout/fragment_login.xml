@@ -19,6 +19,7 @@
         android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/usernameInputLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user" />
@@ -30,6 +31,7 @@
         android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordInputLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -47,8 +49,6 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:text="@string/iniciar" />
 
@@ -56,9 +56,6 @@
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/login"
-            android:layout_alignBottom="@+id/login"
-            android:layout_alignParentEnd="true"
             android:layout_weight="1"
             android:text="@string/registro" />
     </LinearLayout>
