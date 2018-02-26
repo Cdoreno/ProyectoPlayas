@@ -12,8 +12,11 @@
     <string name="registro">Registrarse</string>
     <string name="cancel">Cancelar</string>
     <string name="confirm">Confirmar</string>
+    <string name="send">Enviar</string>
     <!--Maps-->
     <string name="new_markmap">Añadir playa</string>
+    
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
 

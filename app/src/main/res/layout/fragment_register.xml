@@ -19,6 +19,7 @@
         android:layout_marginTop="5dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/usernameInputReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/user" />
@@ -30,6 +31,7 @@
         android:layout_marginTop="10dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordInputReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -42,6 +44,7 @@
         android:layout_marginTop="10dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/passwordInputConfirmReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -59,20 +62,15 @@
             android:id="@+id/cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_weight="1"
             android:text="@string/cancel" />
 
         <Button
-            android:id="@+id/confirm"
+            android:id="@+id/send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/login"
-            android:layout_alignBottom="@+id/login"
-            android:layout_alignParentEnd="true"
             android:layout_weight="1"
-            android:text="@string/confirm" />
+            android:text="@string/send" />
     </LinearLayout>
 
 
