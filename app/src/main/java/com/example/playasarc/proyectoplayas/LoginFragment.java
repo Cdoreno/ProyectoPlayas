@@ -1,6 +1,7 @@
 package com.example.playasarc.proyectoplayas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -62,6 +63,10 @@ public class LoginFragment extends Fragment {
                 if (dbHandler.checkAccount(username, password)>0){
                     Toast welcome = Toast.makeText(getContext(), "Bienvenido, " + username, Toast.LENGTH_SHORT);
                     welcome.show();
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(), MapActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
                 } else {
                     Toast error = Toast.makeText(getContext(), "Nombre de usuario o contraseña incorrectos", Toast.LENGTH_SHORT);
                     error.show();
