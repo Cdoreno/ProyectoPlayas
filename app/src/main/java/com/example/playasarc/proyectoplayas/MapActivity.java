@@ -1,9 +1,11 @@
 package com.example.playasarc.proyectoplayas;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -25,17 +27,23 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener,OnMapReadyCallback {
 
     private MapFragment mMapFragment;
     private GoogleApiClient mGoogleApiClient;
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private GoogleMap mMap;
     private String m_Text = "";
+    private BeachManager bManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        bManager = BeachManager.get(getApplicationContext());
     }
 
     @Override
@@ -69,9 +79,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
         LatLngBounds MALLORCA = new LatLngBounds(
-                new LatLng(39, 2.2), new LatLng(40, 3.6));
+                new LatLng(38.6, 1.1), new LatLng(40.6, 4.6));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(MALLORCA.getCenter(), 8));
         mMap.setLatLngBoundsForCameraTarget(MALLORCA);
+
+
+        loadMarksFromDB();
+
+
+        mMap.setOnInfoWindowClickListener(this);
     }
 
     @Override
@@ -114,6 +130,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 m_Text = input.getText().toString();
+
+                addBeachMark(m_Text);
+                Toast succ = Toast.makeText(getApplicationContext(), "Playa "+m_Text+" añadida", Toast.LENGTH_LONG);
+                succ.show();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -124,5 +144,38 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
         builder.show();
+    }
+
+    private void addBeachMark(String m_text) {
+        Location loc = mMap.getMyLocation();
+        BeachMark bm = new BeachMark();
+        bm.setmName(m_Text);
+        bm.setmLatLng(new LatLng(loc.getLatitude(),loc.getLongitude()));
+
+        putMarkOnMap(bm);
+        bManager.addBeachDB(bm);
+    }
+
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Toast error = Toast.makeText(this, "Playa elegida: "+marker.getTag(), Toast.LENGTH_SHORT);
+        error.show();
+    }
+
+    private void loadMarksFromDB(){
+        List<BeachMark> marks = bManager.getmBeachMark();
+        for (int i=0;i<marks.size();i++){
+            putMarkOnMap(marks.get(i));
+        }
+    }
+
+    private void putMarkOnMap (BeachMark bm){
+        Marker marker;
+        marker = mMap.addMarker(new MarkerOptions()
+                .position(bm.getmLatLng())
+                .title(bm.getmName())
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+        marker.setTag(bm.getmId());
     }
 }
