@@ -31,7 +31,7 @@ public class BeachManager {
         mapDBHandler = new MapDBHandler(mContext);
         mDatabase = mapDBHandler.getWritableDatabase();
         mBeachMark = new ArrayList<>();
-        insertDefaultBeaches();
+        //insertDefaultBeaches();
 
     }
 
