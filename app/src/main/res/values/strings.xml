@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Proyecto Playas</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="splash">SPLASH</string>
+
+    <!-- Strings related to login -->
+    <string name="user">Usuario</string>
+    <string name="pass">Contraseña</string>
+    <string name="passConfirm">Confirmar Contraseña</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="registro">Registrarse</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="send">Enviar</string>
+    <!--Maps-->
+    <string name="new_markmap">Añadir playa</string>
+    <string name="new_report">Añadir informe</string>
+
+    <string name="title_activity_maps">Mapa</string>
+
+    <string name="colorFlag">Color de la bandera</string>
+    <string name="aflu">Afluencia</string>
+    <string name="temp">Temperatura (ºC)</string>
+
 </resources>

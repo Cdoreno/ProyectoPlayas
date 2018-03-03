@@ -5,7 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/aux</item>
+
+        <item name="android:textColorHint">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/aux</item>
+        <item name="colorControlHighlight">@color/aux</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
     </style>
 
 </resources>
