@@ -15,9 +15,12 @@
     <string name="send">Enviar</string>
     <!--Maps-->
     <string name="new_markmap">Añadir playa</string>
-    
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="new_report">Añadir informe</string>
+
+    <string name="title_activity_maps">Mapa</string>
+
+    <string name="colorFlag">Color de la bandera</string>
+    <string name="aflu">Afluencia</string>
+    <string name="temp">Temperatura (ºC)</string>
 
 </resources>
