@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static java.lang.Thread.sleep;
+
 public class RegisterFragment extends Fragment {
 
     private Context mContext;
@@ -68,11 +70,18 @@ public class RegisterFragment extends Fragment {
                         Toast error = Toast.makeText(getContext(), "El usuario ya existe", Toast.LENGTH_SHORT);
                         error.show();
                     } else {
+                            dbHandler.addAccount(account);
 
-                        dbHandler.addAccount(account);
+                            Toast success = Toast.makeText(getContext(), "Usuario creado correctamente", Toast.LENGTH_SHORT);
+                            success.show();
 
-                        Toast success = Toast.makeText(getContext(), "Usuario creado correctamente", Toast.LENGTH_SHORT);
-                        success.show();
+                            Fragment fragment = new LoginFragment();
+                            FragmentManager supportFragmentManager = getFragmentManager();
+                            FragmentTransaction transaction = supportFragmentManager.beginTransaction();
+                            transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+                            transaction.replace(R.id.fragment_container, fragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
                     }
 
                 } else {
