@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MapActivity"
+            android:label="@string/title_activity_maps"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -38,6 +39,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAU2a-nViCGx3EMv9uJEt44cGiGfTRLaC0" />
 
+        <activity android:name=".ReportActivity" />
+        <activity android:name=".ReportPagerActivity" />
+        <activity android:name=".ReportAddActivity"
+            android:label="@string/new_report"/>
     </application>
 
 </manifest>

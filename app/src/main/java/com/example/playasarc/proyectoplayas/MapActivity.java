@@ -62,6 +62,7 @@ public class MapActivity extends AppCompatActivity implements GoogleMap.OnInfoWi
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.map_menu, menu);
+
         return true;
     }
 
@@ -159,8 +160,10 @@ public class MapActivity extends AppCompatActivity implements GoogleMap.OnInfoWi
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Toast error = Toast.makeText(this, "Playa elegida: "+marker.getTag(), Toast.LENGTH_SHORT);
-        error.show();
+        Intent intent = new Intent();
+        intent.setClass(this, ReportActivity.class);
+        intent.putExtra("id_beach",String.valueOf(marker.getTag()));
+        startActivity(intent);
     }
 
     private void loadMarksFromDB(){
